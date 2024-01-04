@@ -42,8 +42,8 @@ const data = {
 };
 
   return (
-    <div>
-      <Pie data={data} />
+    <div className='container'>
+      <Pie data={data}  options={{ responsive: true, maintainAspectRatio: false }}/>
     </div>
   )
 }
