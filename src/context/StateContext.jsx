@@ -16,8 +16,8 @@ export const StateContextProvider = ({children}) => {
         dispatch({type: 'ADD', payload:data})
     }
 
-    const deleteProduct = (id) => {
-        dispatch({type: 'DELETE', payload: id})
+    const deleteProduct = (id, quantity, category) => {
+        dispatch({type: 'DELETE', payload: {id, quantity, category}})
     }
 
     const editMode = (id) => {
@@ -28,7 +28,8 @@ export const StateContextProvider = ({children}) => {
         dispatch({type:'EDITPRODUCT', payload : data})
     }
 
-    return <StateContext.Provider value={{add, state, deleteProduct, editMode, editProduct}}>
+    return <StateContext.Provider value={
+        {add, state, deleteProduct, editMode, editProduct} }>
                 {children}
             </StateContext.Provider>
 }

@@ -15,7 +15,7 @@ const {state:{products}, deleteProduct, editMode} = useContext(StateContext)
                     <h2>category: {product.category}</h2>
                     <h3>price: {product.price}</h3>
                     <h3>quantity: {product.quantity}</h3>
-                    <button onClick={ () => deleteProduct(product.id) }>delete product</button>
+                    <button onClick={ () => deleteProduct(product.id, product.quantity, product.category) }>delete product</button>
                     <button onClick={() => editMode(product.id)}>edit</button>
                 </div>
             ))

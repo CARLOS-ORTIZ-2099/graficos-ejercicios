@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import { StateContext } from "../context/StateContext"
+/* import { Test } from "./Test" */
 
 
 const initial = {product:'', price:'', category:'', quantity:'', id:''}
 
 export const FormInventory = () => {
     const {add, editProduct, state} = useContext(StateContext)
-    console.log(state);
+   // console.log(state);
 
     const [fields, setFields]  = useState(initial)
 
@@ -32,11 +33,11 @@ const sendData = (e) => {
         <h2>FormInventory</h2>
         <form onSubmit={sendData}>
              <label htmlFor="categoty">category</label>
-             <select value={fields.category} name="category" id="category" 
+             <select disabled = {state.edit} value={fields.category} name="category" id="category" 
                 onChange={({target}) => setFields({...fields,[target.name]: target.value })}
              >
                 <option value="">elegir</option>
-                <option value="famaceutico">famaceutico</option>
+                <option value="farmaceutico">famaceutico</option>
                 <option value="limpieza">limpieza</option>
                 <option value="aseo personal">aseo personal</option>
                 <option value="hogar">hogar</option>
@@ -49,10 +50,11 @@ const sendData = (e) => {
                  onChange={({target}) => setFields({...fields,[target.name]: target.value })}
              />
              <input value={fields.quantity} type="number" placeholder="quantity" name="quantity"
-                 onChange={({target}) => setFields({...fields,[target.name]: target.value })}
+                 onChange={({target}) => setFields({...fields,[target.name]: +target.value })}
              />
              <input type="submit" value={`${state.edit ? 'edit' : 'send'}`}/>
         </form>
+      
     </div>
   )
 }
